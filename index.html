@@ -1,100 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Organized Life</title>
+import { motion } from "framer-motion";
+import { Heart, Lightbulb, Users } from "lucide-react";
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+export default function About() {
+  const values = [
+    {
+      icon: Heart,
+      title: "Made with Love",
+      description:
+        "Every template is carefully crafted with attention to detail, aesthetics, and functionality.",
+    },
+    {
+      icon: Lightbulb,
+      title: "Built from Experience",
+      description:
+        "I create what I use. These templates solve real problems I've faced in my own journey.",
+    },
+    {
+      icon: Users,
+      title: "For Everyone",
+      description:
+        "Students, professionals, marketers, traders — there's a template for every walk of life.",
+    },
+  ];
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #F7F7F5;
-      color: #1F2933;
-    }
+  return (
+    <section id="about" className="py-24 lg:py-32 bg-background">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-sm font-medium uppercase tracking-widest text-primary mb-4 block">
+              Our Story
+            </span>
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
+            <h2 className="font-serif text-4xl md:text-5xl font-medium mb-6 leading-tight">
+              Hi, I&apos;m{" "}
+              <span className="text-gradient-crimson">Precious Planners</span>
+            </h2>
 
-    .card {
-      background: #FFFFFF;
-      border-radius: 16px;
-      padding: 48px;
-      border: 1px solid #E5E7EB;
-    }
+            <div className="space-y-6 text-muted-foreground leading-relaxed">
+              <p>
+                It all started with a simple realization: I was struggling to
+                organize my life — my habits, my finances, my goals.
+              </p>
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
+              <p>
+                I taught myself how to create templates and realized many people
+                needed affordable, beautiful tools to organize their lives.
+              </p>
 
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      margin-top: 40px;
-    }
+              <p className="text-foreground font-medium">
+                That&apos;s why Organized Life exists — to help you take control
+                of your life at a price that doesn&apos;t break the bank.
+              </p>
+            </div>
+          </motion.div>
 
-    p {
-      font-size: 16px;
-      line-height: 1.7;
-      max-width: 650px;
-    }
+          {/* Right Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-6"
+          >
+            {values.map((item, index) => {
+              const Icon = item.icon;
 
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 28px;
-      background-color: #2F3E46;
-      color: white;
-      text-decoration: none;
-      border-radius: 999px;
-      font-weight: 500;
-      transition: opacity 0.2s ease;
-    }
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  className="flex gap-5 p-6 rounded-xl bg-card border border-border/50 hover:shadow-soft transition-shadow"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-warm-sand/30 flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-secondary" />
+                  </div>
 
-    .button:hover {
-      opacity: 0.9;
-    }
+                  <div>
+                    <h3 className="font-serif text-xl font-medium mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
 
-    footer {
-      margin-top: 60px;
-      font-size: 14px;
-      color: #6B7280;
-    }
-  </style>
-</head>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-<body>
-  <div class="container">
-    <div class="card">
-      <h1>Organized Life</h1>
-      <p>
-        Simple, elegant templates designed to help you organize your days,
-        finances, habits, and goals — without overwhelm.
-      </p>
-
-      <h2>Free Templates</h2>
-      <p>
-        Start with my Google Sheets templates. Click below, make a copy,
-        and use them instantly.
-      </p>
-
-      <a class="button" href="PASTE-YOUR-GOOGLE-SHEET-LINK-HERE" target="_blank">
-        Download Template
-      </a>
-
-      <footer>
-        © Organized Life — Designed for clarity and balance.
-      </footer>
-    </div>
-  </div>
-</body>
-</html>
 
